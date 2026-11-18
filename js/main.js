@@ -80,19 +80,28 @@
   tabs.forEach(function (t, i) { t.addEventListener("click", function () { showStep(i); }); });
   if (tabs.length) showStep(0);
 
-  /* ---------- home: category cards ---------- */
+  /* ---------- home: cards linked to the actual codebook variables ---------- */
   var grid = document.getElementById("cat-grid");
-  if (grid && data) {
-    data.categories.forEach(function (cat) {
-      var n = data.cases.filter(function (c) { return c.categories.indexOf(cat.id) > -1; }).length;
+  if (grid) {
+    var featured = [
+      { label: "Luxury goods", type: "Sanction", color: "#2a9d8f", description: "Prohibited trade in luxury goods.", filter: "variable=V11" },
+      { label: "Arms exports embargo", type: "Sanction", color: "#c1121f", description: "Restrictions on arms exports.", filter: "variable=V6" },
+      { label: "Individual travel ban", type: "Sanction", color: "#1f8fd6", description: "Travel restrictions on designated individuals.", filter: "variable=V57" },
+      { label: "Deceiving", type: "Strategy", color: "#e4572e", description: "Misrepresenting a shipment's contents or intended use.", filter: "strategy=Deceiving" },
+      { label: "Obfuscating", type: "Strategy", color: "#8a5cf6", description: "Concealing the parties, origins or destinations involved.", filter: "strategy=Obfuscating" },
+      { label: "False documentation", type: "Tactic", color: "#d35d9c", description: "Using falsified or altered documents to evade restrictions.", filter: "tactic=False%20Documentation" },
+      { label: "AIS manipulation", type: "Tactic", color: "#e0a100", description: "Falsifying vessel tracking information.", filter: "tactic=AIS%20Manipulation" },
+      { label: "Use of family members", type: "Tactic", color: "#6c757d", description: "Using relatives to conceal sanctioned individuals' involvement.", filter: "tactic=Use%20of%20Family%20Members" }
+    ];
+    featured.forEach(function (item) {
       var a = document.createElement("a");
       a.className = "cat-card reveal in";
-      a.style.setProperty("--c", cat.color);
-      a.href = "database.html?cat=" + encodeURIComponent(cat.id);
-      a.innerHTML = "<h3></h3><p></p><span class='count'></span><span class='arrow' aria-hidden='true'>&rarr;</span>";
-      a.querySelector("h3").textContent = cat.label;
-      a.querySelector("p").textContent = cat.blurb;
-      a.querySelector(".count").textContent = n + (n === 1 ? " case" : " cases");
+      a.style.setProperty("--c", item.color);
+      a.href = "database.html?" + item.filter;
+      a.innerHTML = "<span class='eyebrow'></span><h3></h3><p></p><span class='count'>Explore coded examples</span><span class='arrow' aria-hidden='true'>&rarr;</span>";
+      a.querySelector(".eyebrow").textContent = item.type;
+      a.querySelector("h3").textContent = item.label;
+      a.querySelector("p").textContent = item.description;
       grid.appendChild(a);
     });
   }
