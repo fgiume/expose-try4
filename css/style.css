@@ -123,7 +123,8 @@ section{padding:4.5rem 0}
 .badge.year{background:#e9eef8;color:var(--navy)}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+body[data-page="home"] .team{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:860px){.team{grid-template-columns:1fr}}
 .person{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;text-align:center;transition:.2s}
 .person:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
