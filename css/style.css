@@ -73,12 +73,12 @@ section{padding:4.5rem 0}
 
 /* stats */
 .stats{background:var(--navy-2);color:#fff;padding:0}
-.stats .row{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats .row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .stat{padding:1.8rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
 .stat:last-child{border-right:0}
 .stat .num{font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--amber);line-height:1}
 .stat .lab{font-size:.85rem;color:#a9bddb;letter-spacing:.06em;text-transform:uppercase;margin-top:.4rem}
-@media(max-width:700px){.stats .row{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid rgba(255,255,255,.08)}}
+@media(max-width:850px){.stats .row{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid rgba(255,255,255,.08)}}
 
 /* pillars */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
@@ -123,7 +123,7 @@ section{padding:4.5rem 0}
 .badge.year{background:#e9eef8;color:var(--navy)}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
 @media(max-width:860px){.team{grid-template-columns:1fr}}
 .person{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;text-align:center;transition:.2s}
 .person:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
