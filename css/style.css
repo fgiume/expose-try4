@@ -124,7 +124,7 @@ section{padding:4.5rem 0}
 
 /* team */
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-body[data-page="home"] .team{grid-template-columns:repeat(4,minmax(0,1fr))}
+body[data-page="home"] .team,body[data-page="about"] .team{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:860px){.team{grid-template-columns:1fr}}
 .person{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;text-align:center;transition:.2s}
 .person:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
@@ -244,3 +244,9 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(31,143,214,.25);b
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;scroll-behavior:auto}}
+
+/* Research team external profiles */
+.person .profile-links{display:flex;flex-wrap:wrap;gap:.35rem .7rem;justify-content:center;margin-top:.9rem;font-size:.88rem}
+.person .profile-links a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.uni .uni-note{color:var(--muted);font-size:.92rem;margin-top:.15rem}
+@media(max-width:860px){body[data-page="home"] .team,body[data-page="about"] .team{grid-template-columns:1fr}}
