@@ -25,7 +25,7 @@
   var TYPES = {
     none: "No UN sanctions",
     sanctions: "UN sanctions, no Panel of Experts",
-    panel: "UN sanctions + Panel (historical)"
+    panel: "UN sanctions + Panel of Experts"
   };
 
   var svg = document.getElementById("cx-map");
@@ -156,7 +156,7 @@
     var card = el("section", "rg " + (r.panel ? "rg-panel" : "rg-nopanel"));
     var head = el("div", "rg-head");
     head.appendChild(el("h4", null, r.name));
-    head.appendChild(el("span", "tag-pill " + (r.panel ? "tp-panel" : "tp-none"), r.panel ? "Panel established (historical)" : "No Panel"));
+    head.appendChild(el("span", "tag-pill " + (r.panel ? "tp-panel" : "tp-none"), r.panel ? "Panel of Experts" : "No Panel"));
     card.appendChild(head);
 
     var dl = el("dl", "facts");
@@ -168,6 +168,12 @@
     card.appendChild(dl);
 
     (r.notes || []).forEach(function (n) { card.appendChild(el("p", "rg-note", n)); });
+    if (r.panelEnd && r.panelEnd.source) {
+      var sourceLink = el("a", null, "UN source for Panel end date ↗");
+      sourceLink.href = r.panelEnd.source;
+      sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
+      var noteSource = el("p", "rg-src"); noteSource.appendChild(sourceLink); card.appendChild(noteSource);
+    }
 
     if (r.episodes && r.episodes.length) {
       card.appendChild(el("h5", null, "Episodes (" + r.episodes.length + ")"));
@@ -176,6 +182,10 @@
         var li = el("li");
         li.appendChild(el("span", "ep-n", "Episode " + (i + 1)));
         li.appendChild(el("span", "ep-d", e[0] + " – " + e[1]));
+        if (r.panelEnd && r.panelEnd.episode === i + 1) {
+          var panelNote = el("span", "ep-panel-end", r.panelEnd.label);
+          li.appendChild(panelNote);
+        }
         ol.appendChild(li);
       });
       card.appendChild(ol);

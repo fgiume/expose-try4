@@ -48,7 +48,8 @@ window.EXPOSE_REGIMES = {
 
   dprk: { name: "DPRK (North Korea)", panel: true, status: "Ongoing", from: "14 Oct 2006", to: "Present",
     types: ["Travel", "Asset freeze", "Diplomatic", "Arms", "Proscribed activities", "Commodity", "Transportation", "Financial sector"],
-    notes: ["The DPRK sanctions remain in force, but the Panel of Experts mandate expired on 30 April 2024. The map shows historical Panel coverage."],
+    notes: ["The sanctions remain in force, but the Panel of Experts mandate expired on 30 April 2024 (during episode 8) after its renewal was vetoed."],
+    panelEnd: { date: "30 Apr 2024", episode: 8, label: "Panel mandate ended on 30 Apr 2024 (not renewed)", source: "https://main.un.org/securitycouncil/en/sanctions/1718" },
     episodes: [["14 Oct 2006", "12 Jun 2009"], ["12 Jun 2009", "7 Mar 2013"], ["7 Mar 2013", "2 Mar 2016"], ["2 Mar 2016", "30 Nov 2016"], ["30 Nov 2016", "5 Aug 2017"], ["5 Aug 2017", "11 Sep 2017"], ["11 Sep 2017", "22 Dec 2017"], ["22 Dec 2017", "Present"]],
     slug: "democratic-people-s-republic-of-korea", db: "dprk" },
 
@@ -70,7 +71,8 @@ window.EXPOSE_REGIMES = {
 
   iran: { name: "Iran", panel: true, status: "Ongoing", from: "23 Dec 2006", to: "Present",
     types: ["Travel", "Asset freeze", "Arms", "Proscribed activities"],
-    notes: ["Conditional bunkering ban during episodes 4 and 5.", "The UN snapback process reimposed earlier nuclear-related measures on 27 September 2025, but its validity is disputed by Iran, China and Russia."],
+    notes: ["Conditional bunkering ban during episodes 4 and 5.", "The Panel of Experts established in 2010 ended on 16 January 2016 (at the end of episode 5), when the arrangements under resolution 2231 took effect. The 2025 snapback did not automatically recreate that Panel.", "The UN snapback process reimposed earlier nuclear-related measures on 27 September 2025, but its validity is disputed by Iran, China and Russia."],
+    panelEnd: { date: "16 Jan 2016", episode: 5, label: "Panel ceased operations on 16 Jan 2016 (end of episode 5)", source: "https://dppa.un.org/en/panel-of-experts-on-the-islamic-republic-of-iran-2010-2016" },
     episodes: [["23 Dec 2006", "24 Mar 2007"], ["24 Mar 2007", "3 Mar 2008"], ["3 Mar 2008", "9 Jun 2010"], ["9 Jun 2010", "24 Nov 2013"], ["24 Nov 2013", "16 Jan 2016"], ["16 Jan 2016", "18 Oct 2020"], ["18 Oct 2020", "18 Oct 2023"], ["18 Oct 2023", "27 Sep 2025"], ["27 Sep 2025", "Present"]],
     slug: "iran" },
 
@@ -92,6 +94,8 @@ window.EXPOSE_REGIMES = {
 
   sierra: { name: "Sierra Leone", panel: true, status: "Terminated", from: "8 Oct 1997", to: "29 Sep 2010",
     types: ["Travel", "Diplomatic", "Arms", "Commodity"],
+    notes: ["The Panel of Experts established under resolution 1306 (2000) completed its four-month mandate at the end of December 2000 and was not renewed. Sanctions continued until 2010."],
+    panelEnd: { date: "Dec 2000", episode: 4, label: "Panel mandate expired at the end of Dec 2000 (not renewed)", source: "https://digitallibrary.un.org/record/417948" },
     episodes: [["8 Oct 1997", "16 Mar 1998"], ["16 Mar 1998", "22 Oct 1999"], ["22 Oct 1999", "5 Jul 2000"], ["5 Jul 2000", "16 Jan 2002"], ["16 Jan 2002", "29 Sep 2010"]],
     slug: "sierra-leone" },
 
