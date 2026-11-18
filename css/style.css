@@ -250,3 +250,8 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(31,143,214,.25);b
 .person .profile-links a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 .uni .uni-note{color:var(--muted);font-size:.92rem;margin-top:.15rem}
 @media(max-width:860px){body[data-page="home"] .team,body[data-page="about"] .team{grid-template-columns:1fr}}
+
+/* Our Project: source links stay immediately below the section they document. */
+body[data-page="project"] .section-sources{grid-column:1/-1;margin:1.15rem 0 0;font-size:.87rem;color:var(--muted);line-height:1.7}
+body[data-page="project"] .section-sources a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+body[data-page="project"] .project-db-link{grid-column:1/-1;margin:1.5rem 0 0}
