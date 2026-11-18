@@ -101,7 +101,7 @@ window.EXPOSE_REGIMES = {
 
   somalia: { name: "Somalia / Al-Shabaab", panel: true, status: "Ongoing", from: "23 Jan 1992", to: "Present",
     types: ["Travel", "Asset freeze", "Arms", "Commodity"],
-    notes: ["Secondary sanctions on Eritrea during episodes 3 and 4 (see the Eritrea regime).", "In December 2023 the Council lifted the general arms embargo on Somalia’s federal government, maintaining measures against Al-Shabaab; the sanctions types shown span different historical periods."],
+    notes: ["Secondary sanctions on Eritrea during episodes 3 and 4 (see the Eritrea regime).", "In December 2023 the Council lifted the general arms embargo on Somalia’s federal government, maintaining measures against Al-Shabaab; the listed sanctions types did not all apply at the same time."],
     episodes: [["23 Jan 1992", "3 May 2002"], ["3 May 2002", "20 Nov 2008"], ["20 Nov 2008", "22 Feb 2012"], ["22 Feb 2012", "15 Nov 2019"], ["15 Nov 2019", "1 Dec 2023"], ["1 Dec 2023", "Present"]],
     slug: "somalia", db: "somalia" },
 
@@ -223,8 +223,8 @@ window.EXPOSE_COUNTRIES = [
   { id: "231", name: "Ethiopia", regimes: ["etheri"] },
 
   /* ---- successor states of the former Yugoslavia (shown on the map as the countries they became) ---- */
-  { id: "688", name: "Serbia", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). These are historical borders and political entities." },
-  { id: "499", name: "Montenegro", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). These are historical borders and political entities." },
+  { id: "688", name: "Serbia", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). The borders and political entities have since changed." },
+  { id: "499", name: "Montenegro", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). The borders and political entities have since changed." },
   { id: "x-Kosovo", name: "Kosovo", regimes: ["fry1", "fry2"], note: "These sanctions predate Kosovo’s present status. The 1991 embargo covered the former Yugoslavia, while the 1998 embargo applied to the Federal Republic of Yugoslavia, including Kosovo." },
   { id: "070", name: "Bosnia and Herzegovina", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day Bosnia and Herzegovina. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." },
   { id: "191", name: "Croatia", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day Croatia. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." },
