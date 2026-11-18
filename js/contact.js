@@ -1,27 +1,29 @@
-/* EXPOSE – contact form
- * A static site has no server, so the form works in one of two ways:
- *  1) If FORM_ENDPOINT is set (e.g. a Formspree / Getform URL) it is sent there with fetch().
- *  2) Otherwise it opens the visitor's e-mail app with the message pre-filled (mailto:).
- * The project inbox is configured below. A form endpoint is required for delivery without the visitor opening an e-mail app.
+/* EXPOSE contact form: client-side validation only.
+ * Delivery and the acknowledgement email are handled by FormSubmit.
+ * The inbox owner must activate the form using the email from FormSubmit.
  */
 (function () {
   "use strict";
-  var CONTACT_EMAIL = "expose@rug.nl";
-  var FORM_ENDPOINT = "";                              // <-- optional, e.g. "https://formspree.io/f/xxxxxxx"
-
   var form = document.getElementById("contact-form");
   if (!form) return;
-  var ok = document.getElementById("success");
   var msg = form.elements["message"];
   var counter = document.getElementById("counter");
   var MAX = 1500;
+  var submit = form.querySelector('button[type="submit"]');
+  var next = document.getElementById("contact-next");
+  // The form backend requires a full absolute redirect URL.
+  if (next && /^https?:$/.test(location.protocol)) {
+    next.value = new URL("thanks.html", location.href).href;
+  }
 
-  msg.addEventListener("input", function () { counter.textContent = msg.value.length + " / " + MAX; });
-
+  msg.addEventListener("input", function () {
+    counter.textContent = msg.value.length + " / " + MAX;
+  });
   function setInvalid(name, bad) {
-    var f = form.elements[name].closest(".field");
-    f.classList.toggle("invalid", bad);
-    form.elements[name].setAttribute("aria-invalid", bad ? "true" : "false");
+    var input = form.elements[name];
+    var field = input.closest(".field");
+    field.classList.toggle("invalid", bad);
+    input.setAttribute("aria-invalid", bad ? "true" : "false");
     return bad;
   }
   function validate() {
@@ -35,35 +37,20 @@
     ];
     return bad.indexOf(true) === -1;
   }
-  ["name", "email", "topic", "message", "consent"].forEach(function (n) {
-    form.elements[n].addEventListener("blur", validate);
-  });
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (form.elements["website"].value) return;          // honeypot: bots fill this in
-    if (!validate()) { var first = form.querySelector(".invalid input, .invalid select, .invalid textarea"); if (first) first.focus(); return; }
-
-    var payload = {
-      name: form.elements["name"].value.trim(),
-      email: form.elements["email"].value.trim(),
-      affiliation: form.elements["affiliation"].value.trim(),
-      topic: form.elements["topic"].value,
-      message: msg.value.trim()
-    };
-    function done(text) {
-      ok.textContent = text; ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" });
-      form.reset(); counter.textContent = "0 / " + MAX;
+  form.addEventListener("submit", function (event) {
+    if (form.elements["_honey"].value) {
+      event.preventDefault();
+      return;
     }
-
-    if (FORM_ENDPOINT) {
-      fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); done("Thank you, " + payload.name + ". Your message has been sent and we will reply by e-mail."); })
-        .catch(function () { ok.textContent = "Sorry, the message could not be sent. Please e-mail " + CONTACT_EMAIL + " directly."; ok.classList.add("show"); });
-    } else {
-      var body = "Name: " + payload.name + "\nEmail: " + payload.email + "\nAffiliation: " + (payload.affiliation || "-") + "\n\n" + payload.message;
-      location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("[EXPOSE] " + payload.topic) + "&body=" + encodeURIComponent(body);
-      done("Thank you, " + payload.name + ". Your e-mail app should have opened with the message ready to send. If nothing opened, write to " + CONTACT_EMAIL + ".");
+    if (!validate()) {
+      event.preventDefault();
+      var first = form.querySelector(".invalid input, .invalid select, .invalid textarea");
+      if (first) first.focus();
+      return;
     }
+    if (submit) { submit.disabled = true; submit.textContent = "Submitting…"; }
+    // Allow the browser to POST the form to the delivery provider.
+    // Do not display a success message until the provider accepts it.
   });
 })();
