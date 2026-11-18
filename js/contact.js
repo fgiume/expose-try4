@@ -2,11 +2,11 @@
  * A static site has no server, so the form works in one of two ways:
  *  1) If FORM_ENDPOINT is set (e.g. a Formspree / Getform URL) it is sent there with fetch().
  *  2) Otherwise it opens the visitor's e-mail app with the message pre-filled (mailto:).
- * Change CONTACT_EMAIL (and optionally FORM_ENDPOINT) below before publishing.
+ * The project inbox is configured below. A form endpoint is required for delivery without the visitor opening an e-mail app.
  */
 (function () {
   "use strict";
-  var CONTACT_EMAIL = "expose-project@example.org";   // <-- replace with the project address
+  var CONTACT_EMAIL = "expose@rug.nl";
   var FORM_ENDPOINT = "";                              // <-- optional, e.g. "https://formspree.io/f/xxxxxxx"
 
   var form = document.getElementById("contact-form");
