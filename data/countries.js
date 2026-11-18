@@ -48,6 +48,7 @@ window.EXPOSE_REGIMES = {
 
   dprk: { name: "DPRK (North Korea)", panel: true, status: "Ongoing", from: "14 Oct 2006", to: "Present",
     types: ["Travel", "Asset freeze", "Diplomatic", "Arms", "Proscribed activities", "Commodity", "Transportation", "Financial sector"],
+    notes: ["The DPRK sanctions remain in force, but the Panel of Experts mandate expired on 30 April 2024. The map shows historical Panel coverage."],
     episodes: [["14 Oct 2006", "12 Jun 2009"], ["12 Jun 2009", "7 Mar 2013"], ["7 Mar 2013", "2 Mar 2016"], ["2 Mar 2016", "30 Nov 2016"], ["30 Nov 2016", "5 Aug 2017"], ["5 Aug 2017", "11 Sep 2017"], ["11 Sep 2017", "22 Dec 2017"], ["22 Dec 2017", "Present"]],
     slug: "democratic-people-s-republic-of-korea", db: "dprk" },
 
@@ -69,7 +70,7 @@ window.EXPOSE_REGIMES = {
 
   iran: { name: "Iran", panel: true, status: "Ongoing", from: "23 Dec 2006", to: "Present",
     types: ["Travel", "Asset freeze", "Arms", "Proscribed activities"],
-    notes: ["Conditional bunkering ban during episodes 4 and 5."],
+    notes: ["Conditional bunkering ban during episodes 4 and 5.", "The UN snapback process reimposed earlier nuclear-related measures on 27 September 2025, but its validity is disputed by Iran, China and Russia."],
     episodes: [["23 Dec 2006", "24 Mar 2007"], ["24 Mar 2007", "3 Mar 2008"], ["3 Mar 2008", "9 Jun 2010"], ["9 Jun 2010", "24 Nov 2013"], ["24 Nov 2013", "16 Jan 2016"], ["16 Jan 2016", "18 Oct 2020"], ["18 Oct 2020", "18 Oct 2023"], ["18 Oct 2023", "27 Sep 2025"], ["27 Sep 2025", "Present"]],
     slug: "iran" },
 
@@ -96,7 +97,7 @@ window.EXPOSE_REGIMES = {
 
   somalia: { name: "Somalia / Al-Shabaab", panel: true, status: "Ongoing", from: "23 Jan 1992", to: "Present",
     types: ["Travel", "Asset freeze", "Arms", "Commodity"],
-    notes: ["Secondary sanctions on Eritrea during episodes 3 and 4 (see the Eritrea regime)."],
+    notes: ["Secondary sanctions on Eritrea during episodes 3 and 4 (see the Eritrea regime).", "In December 2023 the Council lifted the general arms embargo on Somalia’s federal government, maintaining measures against Al-Shabaab; the sanctions types shown span different historical periods."],
     episodes: [["23 Jan 1992", "3 May 2002"], ["3 May 2002", "20 Nov 2008"], ["20 Nov 2008", "22 Feb 2012"], ["22 Feb 2012", "15 Nov 2019"], ["15 Nov 2019", "1 Dec 2023"], ["1 Dec 2023", "Present"]],
     slug: "somalia", db: "somalia" },
 
@@ -105,19 +106,21 @@ window.EXPOSE_REGIMES = {
     episodes: [["3 Mar 2015", "13 Jul 2018"], ["13 Jul 2018", "Present"]],
     slug: "south-sudan" },
 
-  /* the next three are PROVISIONAL: the case pages could not be read, see "provisional" */
+  /* Dates and episodes checked against UN SanctionsApp cases. */
   sudan2: { name: "Sudan II", panel: true, status: "Ongoing", from: "30 Jul 2004", to: "Present",
-    types: ["Travel", "Asset freeze", "Arms"], episodes: null,
-    slug: "sudan-ii", provisional: true },
+    types: ["Travel", "Asset freeze", "Arms"],
+    notes: ["The measures were directed at Darfur; they were not a comprehensive embargo against all of Sudan."],
+    episodes: [["30 Jul 2004", "29 Mar 2005"], ["29 Mar 2005", "Present"]],
+    slug: "sudan-ii" },
 
-  taliban: { name: "Taliban", panel: true, status: "Ongoing", from: "Jun 2011", to: "Present",
-    types: ["Travel", "Asset freeze", "Arms"], episodes: null,
+  taliban: { name: "Taliban", panel: true, status: "Ongoing", from: "17 Jun 2011", to: "Present",
+    types: ["Travel", "Asset freeze", "Arms"], episodes: [["17 Jun 2011", "Present"]],
     notes: ["Before June 2011 the Taliban were sanctioned inside the Al-Qaida regime (see Al-Qaida / ISIL / Associates)."],
-    slug: "taliban", provisional: true },
+    slug: "taliban" },
 
   yemen: { name: "Yemen", panel: true, status: "Ongoing", from: "26 Feb 2014", to: "Present",
-    types: ["Travel", "Asset freeze", "Arms"], episodes: null,
-    slug: "yemen", db: "yemen", provisional: true },
+    types: ["Travel", "Asset freeze", "Arms"], episodes: [["26 Feb 2014", "14 Apr 2015"], ["14 Apr 2015", "Present"]],
+    slug: "yemen", db: "yemen" },
 
   /* ------------------------- SANCTIONS WITHOUT PANEL OF EXPERTS ------------------------- */
   gbissau: { name: "Guinea-Bissau", panel: false, status: "Ongoing", from: "18 May 2012", to: "Present",
@@ -130,9 +133,10 @@ window.EXPOSE_REGIMES = {
     episodes: [["31 Mar 1992", "11 Nov 1993"], ["11 Nov 1993", "5 Apr 1999"], ["5 Apr 1999", "12 Sep 2003"]],
     slug: "libya-i" },
 
-  sudan1: { name: "Sudan I", panel: false, status: "Terminated", from: "1996", to: "2001",
-    types: ["Diplomatic", "Transportation"], episodes: null,
-    slug: "sudan-i", provisional: true },
+  sudan1: { name: "Sudan I", panel: false, status: "Terminated", from: "26 Apr 1996", to: "28 Sep 2001",
+    types: ["Diplomatic", "Transportation (authorized, not implemented)"],
+    notes: ["Diplomatic restrictions entered into force on 10 May 1996; the aviation ban was authorized but not brought into force."],
+    episodes: [["26 Apr 1996", "16 Aug 1996"], ["16 Aug 1996", "28 Sep 2001"]], slug: "sudan-i" },
 
   rhodesia: { name: "Southern Rhodesia", panel: false, status: "Terminated", from: "16 Dec 1966", to: "21 Dec 1979",
     types: ["Commodity", "Arms", "Comprehensive"],
@@ -144,9 +148,9 @@ window.EXPOSE_REGIMES = {
     notes: ["Mandatory arms embargo (Res. 418, 1977); lifted by Res. 919 (1994)."],
     episodes: null, outside: true },
 
-  fry1: { name: "Former Yugoslavia I", panel: false, status: "Terminated", from: "15 Sep 1991", to: "1 Oct 1996",
+  fry1: { name: "Former Yugoslavia I", panel: false, status: "Terminated", from: "25 Sep 1991", to: "1 Oct 1996",
     types: ["Arms", "Comprehensive"],
-    notes: ["Comprehensive sanctions from May 1992 to October 1996."],
+    notes: ["The 1991 arms embargo covered the former Yugoslavia; the wider sanctions from 1992 targeted the Federal Republic of Yugoslavia (Serbia and Montenegro), not every successor state."],
     episodes: [["25 Sep 1991", "30 May 1992"], ["30 May 1992", "1 Oct 1996"]],
     slug: "former-yugoslavia-i" },
 
@@ -215,11 +219,11 @@ window.EXPOSE_COUNTRIES = [
   { id: "231", name: "Ethiopia", regimes: ["etheri"] },
 
   /* ---- successor states of the former Yugoslavia (shown on the map as the countries they became) ---- */
-  { id: "688", name: "Serbia", regimes: ["fry1", "fry2"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "499", name: "Montenegro", regimes: ["fry1", "fry2"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "x-Kosovo", name: "Kosovo", regimes: ["fry1", "fry2"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "070", name: "Bosnia and Herzegovina", regimes: ["fry1"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "191", name: "Croatia", regimes: ["fry1"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "807", name: "North Macedonia", regimes: ["fry1"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." },
-  { id: "705", name: "Slovenia", regimes: ["fry1"], note: "Sanctions were imposed on the former Yugoslavia and its successors; the map shows them on the successor states." }
+  { id: "688", name: "Serbia", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). These are historical borders and political entities." },
+  { id: "499", name: "Montenegro", regimes: ["fry1", "fry2"], note: "The 1991 arms embargo covered the former Yugoslavia; broader sanctions from 1992 and the 1998 embargo targeted the Federal Republic of Yugoslavia (Serbia and Montenegro). These are historical borders and political entities." },
+  { id: "x-Kosovo", name: "Kosovo", regimes: ["fry1", "fry2"], note: "These sanctions predate Kosovo’s present status. The 1991 embargo covered the former Yugoslavia, while the 1998 embargo applied to the Federal Republic of Yugoslavia, including Kosovo." },
+  { id: "070", name: "Bosnia and Herzegovina", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day Bosnia and Herzegovina. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." },
+  { id: "191", name: "Croatia", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day Croatia. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." },
+  { id: "807", name: "North Macedonia", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day North Macedonia. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." },
+  { id: "705", name: "Slovenia", regimes: ["fry1"], note: "The 1991 arms embargo covered the former Yugoslavia, including the territory of present-day Slovenia. The broad 1992 sanctions targeted Serbia and Montenegro, not all successor states." }
 ];

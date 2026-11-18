@@ -25,7 +25,7 @@
   var TYPES = {
     none: "No UN sanctions",
     sanctions: "UN sanctions, no Panel of Experts",
-    panel: "UN sanctions + Panel of Experts"
+    panel: "UN sanctions + Panel (historical)"
   };
 
   var svg = document.getElementById("cx-map");
@@ -156,7 +156,7 @@
     var card = el("section", "rg " + (r.panel ? "rg-panel" : "rg-nopanel"));
     var head = el("div", "rg-head");
     head.appendChild(el("h4", null, r.name));
-    head.appendChild(el("span", "tag-pill " + (r.panel ? "tp-panel" : "tp-none"), r.panel ? "Panel of Experts" : "No Panel"));
+    head.appendChild(el("span", "tag-pill " + (r.panel ? "tp-panel" : "tp-none"), r.panel ? "Panel established (historical)" : "No Panel"));
     card.appendChild(head);
 
     var dl = el("dl", "facts");
